@@ -15,6 +15,6 @@ public class userDto {
     private String collegeName;
     private String collegeRegNo;
     private String mobileNo;
-    private String password;
+    private String password; private String department;
     private String role;
 }

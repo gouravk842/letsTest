@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+  <title>Sign up now</title>
+
+  <!-- add favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- add css styling -->
+  <link rel="stylesheet" type="text/css" href="css/registration.css">
+  <link rel="stylesheet" type="text/css" href="css/registration_query.css">
+
+  <!-- fontawesome cdn -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+<section class="main">
+  <div class="form__box">
+    <div class="top">
+      <h3>Create Account</h3>
+    </div>
+
+    <form autocomplete="off">
+      <div class="details_input">
+        <input type="text" name="name" id="name" placeholder="Name" autocomplete="off">
+        <input type="email" name="email" id="email"placeholder="Email" autocomplete="off">
+        <input type="password" name="pass" id="pass" placeholder="Password" autocomplete="new-password">
+        <input type="text" name="mobile" id="mobile" placeholder="Mobile">
+        <input type="text" name="address" id="address"placeholder="Address">
+        <input type="text" name="college" id="college"placeholder="College Name">
+        <input type="text" name="department" id="department"placeholder="Department">
+        <input type="text" name="reg" id="regNo"placeholder="Registration No">
+        <input type="radio" id="child" name="age" placeholder="Role" value="child" checked>
+        <label for="child">Student</label><br>
+        <input type="radio" id="adult" name="age" value="adult">
+        <label for="adult">Teacher</label><br>
+      </div>
+
+      <div class="checkbox">
+        <input type="checkbox" name="check">
+        <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy policy</a></span>
+      </div>
+
+      <div class="action">
+        <input type="button" id="signup" name="signup" value="Sign Up">
+        <input type="button" id="signin" name="signin" value="Sign In">
+      </div>
+    </form>
+  </div>
+</section>
+
+</body>
+<script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
+<script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/js/registration.js}"></script>
+</html>
