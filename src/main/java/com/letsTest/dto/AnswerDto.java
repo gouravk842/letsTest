@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class answerDto {
-
+public class AnswerDto {
+    private Long answerId;
     private Long questionId;
-    private String option;
+    private String questionOption;
 }
+

@@ -7,16 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+
+
 @Setter
 @Getter
 @Entity
-public class quiz {
+
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long questionId;
     private Long quizId;
-    private String nameOfTopic;
-    private String description;
-    private Long createdById;
-    private LocalDate createdDate;
+    private String question;
+    private String hint;
+    private String correctAnswer;
 }

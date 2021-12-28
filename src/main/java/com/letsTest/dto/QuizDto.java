@@ -7,9 +7,10 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-public class quizDto {
+public class QuizDto {
+    private Long quizId;
     private String nameOfTopic;
     private String description;
     private Long createdById;
-    private LocalDate createdDate;
 }
+
