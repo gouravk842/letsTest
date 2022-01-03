@@ -1,0 +1,87 @@
+.quizButton {
+    background-color: inherit;
+    position: initial;
+    padding: 1px 1px;
+    margin: 0.9% 2.5% 0.9%;
+    font-size: 16px;
+    color: green;
+    cursor: pointer;
+    border-radius: 17px;
+    display: block;
+    /*flex-direction: column;*/
+    border: solid 2px;
+    box-sizing: border-box;
+    border-radius: revert;
+    box-shadow: 5px 5px #888888;
+    /*margin-bottom: 0.7%;
+    margin-left: 30%;*/
+    width: 600px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.quizButton:hover {
+    background: #eee;
+}
+
+.right, .left {
+    height: 100%;
+    /*width: 50%;*/
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    padding-top: 20px;
+}
+.left {
+    left: 0;
+    width: 60%;
+    background-color: white;
+    margin-top: 3%;
+}
+
+/* Control the right side */
+.right {
+    width: 40%;
+    background-color:white;
+    right: 0;
+    margin: 3%;
+
+
+}
+.answerBtn {
+    background-color: inherit;
+    padding: 1.2% 1.2%;
+    font-size: 16px;
+    color: green;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px #888888;
+    margin: 2%;
+    width: 50%;
+    align-items: initial;
+    justify-content: initial;
+}
+
+.answerBtn:hover {
+    background: #eee;
+}
+
+.questionText{
+    align-items: center;
+    justify-content: center;
+}
+#questionAnswer{
+    overflow: scroll;
+    background-color: #528262;
+}
+#quizHistory{
+    overflow: scroll;
+    background-color: #7fa98d;
+}
+#quizes{
+    background-color: #888888;
+}

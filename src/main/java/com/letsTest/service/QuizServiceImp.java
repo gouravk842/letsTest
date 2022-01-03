@@ -4,10 +4,12 @@ import com.letsTest.dto.QuizDto;
 import com.letsTest.entity.Quiz;
 import com.letsTest.repository.QuizRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class QuizServiceImp implements QuizService {
@@ -34,6 +36,15 @@ public class QuizServiceImp implements QuizService {
         quizRepository.updateQuizById(quizDto.getNameOfTopic(), quizDto.getQuizId());
         return "Success";
     }
+
+    public List<QuizDto> getQuizByCreatedById(Long createdBy){
+        List<Quiz> quizList=quizRepository.getQuizDetailById(createdBy);
+        List<QuizDto> quizListDtos = modelMapper.map(quizList, new TypeToken<List<QuizDto>>() {
+        }.getType());
+        return quizListDtos;
+    }
+
+
 
 
 }

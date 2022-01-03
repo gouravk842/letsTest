@@ -5,8 +5,11 @@ import com.letsTest.dto.QuizDto;
 import com.letsTest.entity.Question;
 import com.letsTest.repository.QuestionRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class QuestionServiceImp implements QuestionService{
@@ -30,6 +33,12 @@ public class QuestionServiceImp implements QuestionService{
     public String EditQuestion(QuestionDto questionDto){
         questionRepository.updateQuestionById(questionDto.getQuestion(), questionDto.getQuestionId());
         return "Success";
+    }
+    public List<QuestionDto> getAllQuestionByQuizId(Long quizId){
+        List <Question> questionList=questionRepository.getQuestionDetailById(quizId);
+        List<QuestionDto> questionListDtos = modelMapper.map(questionList, new TypeToken<List<QuestionDto>>() {
+        }.getType());
+        return questionListDtos;
     }
 
 }

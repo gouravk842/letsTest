@@ -15,8 +15,10 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     @Modifying(clearAutomatically = true)
     @javax.transaction.Transactional
-
     @Query("update Quiz q set q.nameOfTopic =:newTopic  where q.quizId=:id")
     void updateQuizById(@Param("newTopic") String newTopic,@Param("id") Long id);
+
+    @Query("select q from Quiz q where q.createdById=:id")
+    List<Quiz> getQuizDetailById(@Param("id")Long id);
 
 }
