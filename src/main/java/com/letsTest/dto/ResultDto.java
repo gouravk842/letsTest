@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 public class ResultDto {
     private Long quizId;
-    private Long createdId;
+    private Long createdById;
     private Long totalMarks;
     private String email;
 }
