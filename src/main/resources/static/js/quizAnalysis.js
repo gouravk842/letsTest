@@ -5,19 +5,29 @@ $(document).ready(function (event) {
 
 
 function loadallQuiz() {
-    let customerId=1;//$('#customerId').val()
+    let quizId=1;//$('#customerId').val()
     $.ajax({
-        url: "/quiz/get/"+ customerId,
+        url: "/quiz/get/"+ quizId,
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
+                let noOfClick=0;
                 for(let i=0;i<data.length;i++){
                     let divnode = document.createElement("div",);
                     let node = document.createElement("button",);
                     node.innerHTML = data[i].nameOfTopic + "<br>" + data[i].description ;
                     node.className = "quizButton";
                     node.onclick = function () {
-                        resultDetails(1,1);
+                       if(noOfClick%2==0){
+                           document.getElementById("resultDetails").style.display="block";
+                           resultDetails(1,1);
+                       }
+                       else {
+                           document.getElementById("resultOuterNode").remove();
+                           document.getElementById("appearedStudentsDiv").remove();
+                           document.getElementById("resultDetails").style.display="none";
+                       }
+                        noOfClick=noOfClick+1;
                     }
                     divnode.appendChild(node);
                     document.getElementById('quizAnalysis').appendChild(divnode);
@@ -38,13 +48,17 @@ function resultDetails(quizId,createdById) {
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
-                totalAppearedStudents(data.length);
+                let divResultOuterNode = document.createElement("div");
+                divResultOuterNode.id="resultOuterNode";
+                totalAppearedStudents(data.length,divResultOuterNode);
                 for(let i=0;i<data.length;i++){
                     let divResultNode = document.createElement("div");
                     divResultNode.id=data[i].createdById;
                     divResultNode.className="resultDiv";
+
                     let divEmailNode = document.createElement("div");
                     divEmailNode.className="emailDiv";
+
                     let node = document.createElement("h3",);
                     node.innerHTML = data[i].email;
                     node.className = "resultText";
@@ -59,7 +73,8 @@ function resultDetails(quizId,createdById) {
                     divMarksNode.appendChild(node2);
                     divResultNode.appendChild(divMarksNode);
 
-                    document.getElementById("resultDetails").appendChild(divResultNode);
+                    divResultOuterNode.appendChild(divResultNode);
+                    document.getElementById("resultDetails").appendChild(divResultOuterNode);
 
                 }
 
@@ -78,6 +93,7 @@ function resultDetails(quizId,createdById) {
 function totalAppearedStudents(totalAppearedStudents) {
     let divTotalAppearedStudentsNode = document.createElement("div");
     divTotalAppearedStudentsNode.className="TotalStudentsDiv";
+    divTotalAppearedStudentsNode.id="appearedStudentsDiv";
 
     let node = document.createElement("h1",);
     node.innerHTML = "Total Appeared Students";

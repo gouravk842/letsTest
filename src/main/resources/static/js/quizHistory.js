@@ -11,17 +11,24 @@ function loadallQuiz() {
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
+                let noOfClick=0;
                 for(let i=0;i<data.length;i++){
                     let divnode = document.createElement("div",);
                     divnode.id = data[i].quizId.toString();
                     let node = document.createElement("button",);
-                   // node.id = data[i].quizId;
                     node.innerHTML = data[i].nameOfTopic + "<br>" + data[i].description ;
                     node.className = "quizButton";
                     node.onclick = function () {
-                      //  location.reload();
-                        $("#questionAnswer").load();
-                        loadAllQuestionsandAnswer(i+1);
+                        if(noOfClick%2==0) {
+                            document.getElementById("questionAnswer").style.display="block";
+                            loadAllQuestionsandAnswer(i + 1);
+                        }
+                        else {
+                            document.getElementById("questionOuterNode").remove();
+                            document.getElementById("questionAnswer").style.overflow="none";
+                            document.getElementById("questionAnswer").style.display="none";
+                        }
+                        noOfClick=noOfClick+1;
                     }
                     let ids=data[i].quizId.toString();
                     divnode.appendChild(node);
@@ -47,6 +54,9 @@ function loadAllQuestionsandAnswer(quizId) {
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
+
+                let divResultOuterNode = document.createElement("div");
+                divResultOuterNode.id="questionOuterNode";
                 for(let i=0;i<data.length;i++){
                     let divQuestionNode = document.createElement("div",);
                     divQuestionNode.id='div'+data[i].question.questionId;
@@ -63,12 +73,12 @@ function loadAllQuestionsandAnswer(quizId) {
                         node2.className='answerBtn'
                         divQuestionNode.appendChild(node2);
                     }
-
-                    document.getElementById("questionAnswer").appendChild(divQuestionNode);
+                    divResultOuterNode.appendChild(divQuestionNode);
+                    document.getElementById("questionAnswer").appendChild(divResultOuterNode);
 
                     for(let k=0; k<data[i].correctAnswer.length; k++){
                         let correctAnswerButtonId='answer'+data[i].correctAnswer[k].correctAnswerId;
-                        document.getElementById(correctAnswerButtonId).style.background='Red';
+                        document.getElementById(correctAnswerButtonId).style.background='blue';
                     }
                 }
 
