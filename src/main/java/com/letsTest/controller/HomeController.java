@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
+//import javax.jws.WebParam;
 
 @Controller
 public class HomeController {
@@ -30,6 +30,19 @@ public class HomeController {
     public ModelAndView register() {
         ModelAndView mv=new ModelAndView();
         mv.setViewName("registration.html");
+        return mv;
+    }
+
+    @GetMapping("/facultyProfile")
+    public ModelAndView profile() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("profile.html");
+        return mv;
+    }
+    @GetMapping("/reviewQuestions")
+    public ModelAndView reviewQuestions() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("reviewQuestions.html");
         return mv;
     }
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>create quiz page</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/createQuiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="logo">
+    <h1>LETSTEST</h1>
+</div>
+<nav class="navbar">
+    <ul>
+        <li><b>
+            Faculty DashBoard
+        </b></li>
+        <li>
+            <a href ="#">Create Quiz</a>
+        </li>
+        <li>
+            <a href = "#">Quiz History</a>
+        </li>
+        <li>
+            <a href = "#">Profile</a>
+        </li>
+    </ul>
+</nav>
+<br>
+<br>
+<br>
+<div class="des">
+<form>
+    <br>
+    <label for="title"><b>Title</b></label><br>
+    <input type="hidden" id="quizId" class="quizId" ><br>
+    <input type="text" id="title" name="title" value=""><br>
+    <div>
+    <label for="description"><b>Description</b></label>
+    </div>
+    <textarea id="description" name="description" style="height:100px"></textarea>
+</form>
+</div>
+<br>
+<button type="button"  id ="createQuiz" class="button createQuiz" ><b>Create Quiz</b></button>
+<br>
+<br>
+<div class="addQuestion" id="addQuestion" style="display: none">
+
+<form>
+    <div class="questionAnswer">
+        <div class="question">
+            <textarea id="question" name="question" placeholder="Type question here..." style="height:100px"></textarea>
+        </div>
+
+        <div id="quizOptions"  >
+        <textarea id="option1" name="option1" placeholder="Option 1" style="height:10px" ></textarea>
+        <textarea id="option2" name="option2" placeholder="Option 2" style="height:10px"></textarea>
+        <textarea id="option3" name="option3" placeholder="Option 3" style="height:10px"></textarea>
+        <textarea id="option4" name="option4" placeholder="Option 4" style="height:10px"></textarea>
+        <br>
+        </div>
+
+        <div class="correctAnswer">
+            <textarea id="correctAnswer" name="answer" placeholder="Type correct answer here..." style="height:50px"></textarea>
+        </div>
+    </div>
+
+    <div id="saveAndNext" class="saveAndNext">
+        <br>
+        <br>
+        <button type="button" id="saveQuestionAnswers" class="button button1"><b>Save And Next</b></button>
+        <button type="button" id="reviewQuestions" class="button button2"><b>Submit</b></button>
+        <br>
+        <br>
+    </div>
+
+</form>
+
+</div>
+
+
+</body>
+
+<script th:src="@{/js/createQuiz.js}"></script>
+<script th:src="@{/js/quizHistory.js}"></script>
+</html>

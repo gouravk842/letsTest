@@ -19,12 +19,12 @@ public class QuizServiceImp implements QuizService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public String SaveQuiz(QuizDto quizDto){
+    public Long SaveQuiz(QuizDto quizDto){
         Quiz quiz=modelMapper.map(quizDto, Quiz.class);
         LocalDate createDate = LocalDate.now();
         quiz.setCreatedDate(createDate);
-        quizRepository.save(quiz);
-        return "Success";
+        Quiz savedQuiz=quizRepository.save(quiz);
+        return savedQuiz.getQuizId();
     }
 
     public String DeleteQuiz(Long quizeId){

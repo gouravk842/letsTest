@@ -32,7 +32,7 @@ public class QuizController {
 
     @RequestMapping(value="/save",method = RequestMethod.POST)
     @ResponseBody
-    public String saveQuizDetails(@RequestBody QuizDto quizDto)
+    public Long saveQuizDetails(@RequestBody QuizDto quizDto)
     {
         return quizService.SaveQuiz(quizDto);
     }
