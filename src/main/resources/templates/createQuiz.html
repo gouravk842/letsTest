@@ -8,28 +8,37 @@
 </head>
 
 <body>
+
 <div class="logo">
     <h1>LETSTEST</h1>
 </div>
 <nav class="navbar">
     <ul>
-        <li><b>
-            Faculty DashBoard
-        </b></li>
         <li>
-            <a href ="#">Create Quiz</a>
+            <b>Faculty DashBoard</b>
         </li>
         <li>
-            <a href = "#">Quiz History</a>
+            <a ><b>Home</b></a>
         </li>
         <li>
-            <a href = "#">Profile</a>
+            <a th:href="@{facultyHome}"><b>Create Quiz</b></a>
+        </li>
+        <li>
+            <a th:href="@{quizHistory}"><b>Quiz History</b></a>
+        </li>
+        <li>
+            <a th:href="@{quizAnalysis}"><b>Quiz Response</b></a>
+        </li>
+        <li>
+            <a th:href="@{profile}"><b>Profile</b></a>
         </li>
     </ul>
 </nav>
+
 <br>
 <br>
 <br>
+
 <div class="des">
 <form>
     <br>
@@ -42,12 +51,15 @@
     <textarea id="description" name="description" style="height:100px"></textarea>
 </form>
 </div>
-<br>
-<button type="button"  id ="createQuiz" class="button createQuiz" ><b>Create Quiz</b></button>
-<br>
-<br>
-<div class="addQuestion" id="addQuestion" style="display: none">
 
+<br>
+
+<button type="button"  id ="createQuiz" class="button createQuiz" ><b>Create Quiz</b></button>
+
+<br>
+<br>
+
+<div class="addQuestion" id="addQuestion" style="display: none">
 <form>
     <div class="questionAnswer">
         <div class="question">
@@ -55,34 +67,47 @@
         </div>
 
         <div id="quizOptions"  >
-        <textarea id="option1" name="option1" placeholder="Option 1" style="height:10px" ></textarea>
-        <textarea id="option2" name="option2" placeholder="Option 2" style="height:10px"></textarea>
-        <textarea id="option3" name="option3" placeholder="Option 3" style="height:10px"></textarea>
-        <textarea id="option4" name="option4" placeholder="Option 4" style="height:10px"></textarea>
-        <br>
-        </div>
-
-        <div class="correctAnswer">
-            <textarea id="correctAnswer" name="answer" placeholder="Type correct answer here..." style="height:50px"></textarea>
+            <label class="container" id="optionA" >
+                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option 1" name="option1" placeholder="Option 1" style="height:10px; " ></textarea>
+            </label>
+            <br>
+            <label class="container" id="optionB" >
+                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option 2" name="option2" placeholder="Option 2" style="height:10px" ></textarea>
+            </label>
+            <br>
+            <label class="container" id="optionC">
+                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option3" name="option3" placeholder="Option 3" style="height:10px" ></textarea>
+            </label>
+            <br>
+            <label class="container" id="optionD"  >
+                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option4" name="option4" placeholder="Option 4" style="height:10px" ></textarea>
+            </label>
+            <br>
+            <label class="container" id="correctAnswer"  >
+                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="correctAns" name="option4" placeholder="Correct Answer" style="height:10px" ></textarea>
+            </label>
         </div>
     </div>
 
     <div id="saveAndNext" class="saveAndNext">
         <br>
         <br>
-        <button type="button" id="saveQuestionAnswers" class="button button1"><b>Save And Next</b></button>
+        <button type="button" id="saveQuestionAnswers" class="button button1" ><b>Save And Next</b></button>
         <button type="button" id="reviewQuestions" class="button button2"><b>Submit</b></button>
         <br>
         <br>
     </div>
 
 </form>
-
 </div>
-
-
 </body>
 
 <script th:src="@{/js/createQuiz.js}"></script>
 <script th:src="@{/js/quizHistory.js}"></script>
+
 </html>

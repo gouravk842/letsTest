@@ -15,7 +15,7 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView root() {
         ModelAndView mv=new ModelAndView();
-        mv.setViewName("index.html");
+        mv.setViewName("facultyHome.html");
         return mv;
     }
 
@@ -33,16 +33,39 @@ public class HomeController {
         return mv;
     }
 
-    @GetMapping("/facultyProfile")
-    public ModelAndView profile() {
-        ModelAndView mv=new ModelAndView();
-        mv.setViewName("profile.html");
-        return mv;
-    }
     @GetMapping("/reviewQuestions")
     public ModelAndView reviewQuestions() {
         ModelAndView mv=new ModelAndView();
         mv.setViewName("reviewQuestions.html");
+        return mv;
+    }
+
+
+    @GetMapping("/createQuiz")
+    public ModelAndView createQuiz() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("createQuiz.html");
+        return mv;
+    }
+
+    @GetMapping("/quizHistory")
+    public ModelAndView quizHistory() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("quizHistory.html");
+        return mv;
+    }
+
+    @GetMapping("/quizAnalysis")
+    public ModelAndView quizAnalysis() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("quizAnalysis.html");
+        return mv;
+    }
+
+    @GetMapping("/profile")
+    public ModelAndView profile() {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("profile.html");
         return mv;
     }
 }

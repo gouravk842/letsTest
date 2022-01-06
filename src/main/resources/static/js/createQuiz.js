@@ -37,10 +37,10 @@ $(document).on('click','#reviewQuestions', function(e){
 $(document).on('click','#saveQuestionAnswers', function(e){
   saveQuestionAnswers();
   $('#question').val("");
-                $('#option1').val("");
-               $('#option2').val("");
-               $('#option3').val("");
-               $('#option4').val("");
+                $('#optionA').val("");
+               $('#optionB').val("");
+               $('#optionC').val("");
+               $('#optionD').val("");
 })
 
  function saveQuestionAnswers(){
@@ -82,10 +82,10 @@ $(document).on('click','#saveQuestionAnswers', function(e){
          console.log()
              alert('success')
               $('#question').val("");
-              $('#option1').val("");
-             $('#option2').val("");
-             $('#option3').val("");
-             $('#option4').val("");
+              $('#optionA').val("");
+             $('#optionB').val("");
+             $('#optionC').val("");
+             $('#optionD').val("");
          },
 
      });
