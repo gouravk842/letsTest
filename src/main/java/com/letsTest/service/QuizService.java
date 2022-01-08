@@ -8,12 +8,14 @@ import java.util.List;
 
 @Service
 public interface QuizService {
-     String SaveQuiz(QuizDto quizDto);
+     Long SaveQuiz(QuizDto quizDto);
 
      String DeleteQuiz(Long quizeId);
 
      String EditQuiz(QuizDto quizDto);
 
      List<QuizDto> getQuizByCreatedById(Long createdBy);
+
+     Quiz getQuiz(Long quizId);
 }
 

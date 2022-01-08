@@ -16,7 +16,7 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     @Query("update Answer a set a.questionOption =:newOption where a.answerId=:id")
     void updateAnswerById(@Param("newOption") String newOption, @Param("id") Long id);
 
-    @Query("select a from Answer a where a.questionId=:queId and a.quizId=:qzId")
-    List<Answer> getAnswerDetailById(@Param("queId")Long queId,@Param("qzId")Long qzId);
+   // @Query("select a from Answer a where a.questionId=:queId and a.quizId=:qzId")
+    //List<Answer> getAnswerDetailById(@Param("queId")Long queId,@Param("qzId")Long qzId);
 }
 

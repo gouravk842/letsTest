@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("QuizRepository")
+@Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     @Modifying(clearAutomatically = true)
@@ -20,5 +20,8 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     @Query("select q from Quiz q where q.createdById=:id")
     List<Quiz> getQuizDetailById(@Param("id")Long id);
+
+    @Query("select q from Quiz q where q.quizId=:id")
+    Quiz getQuizDetailByQuizId(@Param("id")Long id);
 
 }

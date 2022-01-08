@@ -49,11 +49,11 @@ public class AnswerServiceImp implements AnswerService{
         return "Success";
     }
 
-    public List<AnswerDto> getAllAnswerByQuestionId(Long questionId,Long quizId){
+    /*public List<AnswerDto> getAllAnswerByQuestionId(Long questionId,Long quizId){
         List <Answer> answerList=answerRepository.getAnswerDetailById(questionId,quizId);
         List<AnswerDto> answerDtos = modelMapper.map(answerList, new TypeToken<List<AnswerDto>>() {
         }.getType());
         return answerDtos;
-    }
+    }*/
 
 }

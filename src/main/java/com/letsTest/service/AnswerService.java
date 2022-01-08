@@ -14,7 +14,7 @@ public interface AnswerService {
 
      String EditOptions(AnswerDto answerDto);
 
-     List<AnswerDto> getAllAnswerByQuestionId(Long questionId,Long quizId);
+   //  List<AnswerDto> getAllAnswerByQuestionId(Long questionId,Long quizId);
 
      String saveAllAnswer(List<AnswerDto> answerDto);
 }
