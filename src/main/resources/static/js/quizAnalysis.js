@@ -5,9 +5,9 @@ $(document).ready(function (event) {
 
 
 function loadallQuiz() {
-    let quizId=1;//$('#customerId').val()
+    let createdById=1;//$('#customerId').val()
     $.ajax({
-        url: "/quiz/get/"+ quizId,
+        url: "/quiz/get/"+ createdById,
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
@@ -20,7 +20,8 @@ function loadallQuiz() {
                     node.onclick = function () {
                        if(noOfClick%2==0){
                            document.getElementById("resultDetails").style.display="block";
-                           resultDetails(1,1);
+                           let quizId=data[i]["quizId"]
+                           resultDetails(quizId,1);
                        }
                        else {
                            document.getElementById("resultOuterNode").remove();
@@ -43,14 +44,15 @@ function loadallQuiz() {
     });
 }
 function resultDetails(quizId,createdById) {
+    console.log(quizId);
     $.ajax({
-        url: "/results/get?quizId=1&createdById=1",
+        url: "/results/get?quizId="+quizId+"&createdById="+1,
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
                 let divResultOuterNode = document.createElement("div");
                 divResultOuterNode.id="resultOuterNode";
-                totalAppearedStudents(data.length,divResultOuterNode);
+                totalAppearedStudents(data.length);
                 for(let i=0;i<data.length;i++){
                     let divResultNode = document.createElement("div");
                     divResultNode.id=data[i].createdById;

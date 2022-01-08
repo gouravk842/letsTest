@@ -2,6 +2,7 @@ package com.letsTest.controller;
 
 import com.letsTest.dto.*;
 import com.letsTest.entity.Quiz;
+import com.letsTest.repository.QuizRepository;
 import com.letsTest.service.AnswerService;
 import com.letsTest.service.CorrecrAnswerService;
 import com.letsTest.service.QuestionService;
@@ -10,9 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/quiz")
@@ -20,6 +20,9 @@ public class QuizController {
 
     @Autowired
     private QuizService quizService;
+
+    @Autowired
+    private QuizRepository quizRepository;
 
     @Autowired
     private QuestionService questionService;
@@ -107,31 +110,17 @@ public class QuizController {
 
     @RequestMapping(value="/get/quizDetail/{quizId}",method = RequestMethod.GET)
     @ResponseBody
-    public List<QuestionAnswerModel> getQuizDetailsByQuizId(@PathVariable(value = "quizId") Long quizId)
+    public Quiz getQuizDetailsByQuizId(@PathVariable(value = "quizId") Long quizId)
     {
-        List<QuestionDto> questionDtos = questionService.getAllQuestionByQuizId(quizId);
-        List<QuestionAnswerModel> questionAnswerModelList=new ArrayList<>();
-        for(QuestionDto questionDto: questionDtos){
-            QuestionAnswerModel questionAnswerModel=new QuestionAnswerModel();
-            questionAnswerModel.setQuestion(questionDto);
-            List<AnswerDto> answerDtos=answerService.getAllAnswerByQuestionId(questionDto.getQuestionId(),quizId);
-            questionAnswerModel.setAnswers(answerDtos);
-            List<CorrectAnswerDto> correctAnswerDtos=correcrAnswerService.getAllCorrectAnswerByQuestionId(questionDto.getQuestionId(),quizId);
-            questionAnswerModel.setCorrectAnswer(correctAnswerDtos);
-            questionAnswerModelList.add(questionAnswerModel);
+        return quizService.getQuiz(quizId);
 
-        }
-        return questionAnswerModelList;
     }
 
     @RequestMapping(value="/save/questionAnswerDetail",method = RequestMethod.POST)
     @ResponseBody
-    public String saveQuestionAnswerDetail(@RequestBody QuestionAnswerModel questionAnswerModel)
+    public String saveQuestionAnswerDetail(@RequestBody QuizDto quizDto)
     {
-            questionService.saveQuestions(questionAnswerModel.getQuestion());
-            answerService.saveAllAnswer(questionAnswerModel.getAnswers());
-            correcrAnswerService.saveAllCorrectAnswer(questionAnswerModel.getCorrectAnswer());
-
+            quizService.SaveQuiz(quizDto);
         return "Success";
     }
 

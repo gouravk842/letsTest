@@ -15,5 +15,7 @@ public interface QuizService {
      String EditQuiz(QuizDto quizDto);
 
      List<QuizDto> getQuizByCreatedById(Long createdBy);
+
+     Quiz getQuiz(Long quizId);
 }
 

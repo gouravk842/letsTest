@@ -105,3 +105,57 @@
 label textarea{
         vertical-align: middle;
     }
+
+.numberDiv{
+    color: #212121;
+    width: 80px;
+    height: 40px;
+    margin-top: 10px;
+    border: solid 2px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: center;
+    margin-left: 20%;
+}
+.TotalQuestionsDiv{
+    display: flex;
+    flex-direction: row;
+    margin-left: 4%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.quizButton:hover {
+    background: #eee;
+}
+
+.answerBtn {
+    background-color: inherit;
+    padding: 1% 1%;
+    font-size: 16px;
+    color: green;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px #888888;
+    border-radius: 10px;
+    margin: 2%;
+    width: 30%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.answerBtn:hover {
+    background: #eee;
+}
+
+.questionText{
+    align-items: center;
+    justify-content: center;
+}

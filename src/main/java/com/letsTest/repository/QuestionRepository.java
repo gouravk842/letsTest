@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("QuestionRepository")
+@Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     @Query("update Question q set q.question =:newQuestion where q.questionId=:id")
     void updateQuestionById(@Param("newQuestion") String newQuestion, @Param("id") Long id);
 
-    @Query("select q from Question q where q.quizId=:id")
-    List<Question> getQuestionDetailById(@Param("id")Long id);
+    //@Query("select q from Question q where q.quizId=:id")
+    //List<Question> getQuestionDetailById(@Param("id")Long id);
 
 }
 

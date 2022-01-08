@@ -5,9 +5,9 @@ $(document).ready(function (event) {
 
 
 function loadallQuiz() {
-    let customerId=1;//$('#customerId').val()
+    let createdBy=1;//$('#customerId').val()
     $.ajax({
-        url: "/quiz/get/"+ customerId,
+        url: "/quiz/get/"+ createdBy,
         dataType: "json",
         success: function (data) {
             if (data.length > 0) {
@@ -21,10 +21,13 @@ function loadallQuiz() {
                     node.onclick = function () {
                         if(noOfClick%2==0) {
                             document.getElementById("questionAnswer").style.display="block";
-                            loadAllQuestionsandAnswer(i + 1);
+                            let quizId=data[i]["quizId"]
+                            console.log(quizId)
+                            loadAllQuestionsandAnswer(quizId);
                         }
                         else {
                             document.getElementById("questionOuterNode").remove();
+                            document.getElementById("TotalQuestionsDiv").remove();
                             document.getElementById("questionAnswer").style.overflow="none";
                             document.getElementById("questionAnswer").style.display="none";
                         }
@@ -53,32 +56,33 @@ function loadAllQuestionsandAnswer(quizId) {
         url: "/quiz/get/quizDetail/"+ quizId,
         dataType: "json",
         success: function (data) {
-            if (data.length > 0) {
-
+            if (data.question.length > 0) {
+                console.log(data.question.length);
+                totalNumberOfQuestions(data.question.length);
                 let divResultOuterNode = document.createElement("div");
                 divResultOuterNode.id="questionOuterNode";
-                for(let i=0;i<data.length;i++){
+                for(let i=0;i<data.question.length;i++){
                     let divQuestionNode = document.createElement("div",);
-                    divQuestionNode.id='div'+data[i].question.questionId;
+                    divQuestionNode.id='div'+data.question[i].questionId;
                     let node = document.createElement("h3",);
-                    node.id = 'question'+data[i].question.questionId;
-                    node.innerHTML = data[i].question.question + "<br>" + data[i].question.hint ;
+                    node.id = 'question'+data.question[i].questionId;
+                    node.innerHTML = data.question[i].question + "<br>" + data.question[i].hint ;
                     node.className = "questionText";
                     divQuestionNode.appendChild(node)
 
-                    for(let j=0; j<data[i].answers.length; j++){
+                    for(let j=0; j<data.question[i].answers.length; j++){
                         let node2 = document.createElement("button",);
-                        node2.id = 'answer'+data[i].answers[j].answerId;
-                        node2.innerHTML=data[i].answers[j].questionOption;
+                        node2.id = 'answer'+data.question[i].answers[j].answerOrder+i;
+                        node2.innerHTML=data.question[i].answers[j].questionOption;
                         node2.className='answerBtn'
                         divQuestionNode.appendChild(node2);
                     }
                     divResultOuterNode.appendChild(divQuestionNode);
                     document.getElementById("questionAnswer").appendChild(divResultOuterNode);
 
-                    for(let k=0; k<data[i].correctAnswer.length; k++){
-                        let correctAnswerButtonId='answer'+data[i].correctAnswer[k].correctAnswerId;
-                        document.getElementById(correctAnswerButtonId).style.background='blue';
+                    for(let k=0; k<data.question[i].correctAnswer.length; k++){
+                        let correctAnswerButtonId='answer'+data.question[i].correctAnswer[k].correctAnswerOptionId+i;
+                        document.getElementById(correctAnswerButtonId).style.background='LightSkyBlue';
                     }
                 }
 
@@ -91,4 +95,26 @@ function loadAllQuestionsandAnswer(quizId) {
         fail: function () {
         }
     });
+}
+
+function totalNumberOfQuestions(numberOfQuestions) {
+    let divTotalAppearedStudentsNode = document.createElement("div");
+    divTotalAppearedStudentsNode.className="TotalQuestionsDiv";
+    divTotalAppearedStudentsNode.id="TotalQuestionsDiv";
+
+    let node = document.createElement("h1",);
+    node.innerHTML = "Total Questions";
+    node.style.color="blue";
+    divTotalAppearedStudentsNode.appendChild(node);
+
+    let divtotalStudentsNode = document.createElement("div");
+    divtotalStudentsNode.className="numberDiv";
+    let node2 = document.createElement("h3",);
+    node2.style.color="brown"
+    node2.innerHTML=numberOfQuestions;
+    divtotalStudentsNode.appendChild(node2);
+    divTotalAppearedStudentsNode.appendChild(divtotalStudentsNode);
+
+    document.getElementById("questionAnswer").appendChild(divTotalAppearedStudentsNode);
+
 }

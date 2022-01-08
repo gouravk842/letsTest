@@ -7,7 +7,9 @@ import java.util.List;
 
 @Service
 public interface CorrecrAnswerService {
-    List<CorrectAnswerDto> getAllCorrectAnswerByQuestionId(Long questionId,Long quizId);
+   // List<CorrectAnswerDto> getAllCorrectAnswerByQuestionId(Long questionId,Long quizId);
 
     String saveAllCorrectAnswer(List<CorrectAnswerDto> correctAnswerDtos);
+
+    String saveCorrectAnswer(CorrectAnswerDto correctAnswerDtos);
 }

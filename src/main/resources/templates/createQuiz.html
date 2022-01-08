@@ -21,16 +21,16 @@
             <a ><b>Home</b></a>
         </li>
         <li>
-            <a th:href="@{facultyHome}"><b>Create Quiz</b></a>
+            <a href="/createQuiz"><b>Create Quiz</b></a>
         </li>
         <li>
-            <a th:href="@{quizHistory}"><b>Quiz History</b></a>
+            <a href="/quizHistory"><b>Quiz History</b></a>
         </li>
         <li>
-            <a th:href="@{quizAnalysis}"><b>Quiz Response</b></a>
+            <a href="/quizAnalysis"><b>Quiz Response</b></a>
         </li>
         <li>
-            <a th:href="@{profile}"><b>Profile</b></a>
+            <a href="/profile"><b>Profile</b></a>
         </li>
     </ul>
 </nav>
@@ -38,11 +38,11 @@
 <br>
 <br>
 <br>
-
+<section id="createQuizSection">
 <div class="des">
 <form>
     <br>
-    <label for="title"><b>Title</b></label><br>
+    <label for="title"><b>Title</b></label>
     <input type="hidden" id="quizId" class="quizId" ><br>
     <input type="text" id="title" name="title" value=""><br>
     <div>
@@ -68,29 +68,34 @@
 
         <div id="quizOptions"  >
             <label class="container" id="optionA" >
-                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
-                <textarea id="option 1" name="option1" placeholder="Option 1" style="height:10px; " ></textarea>
+                <input type="radio" name="option" value="1" id="1" onclick="fetchRadioButtonValue()" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option1" name="option1" placeholder="Option 1" style="height:10px; " ></textarea>
             </label>
             <br>
             <label class="container" id="optionB" >
-                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
-                <textarea id="option 2" name="option2" placeholder="Option 2" style="height:10px" ></textarea>
+                <input type="radio" name="option" value="2" id="2"  onclick="fetchRadioButtonValue()"  style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option2" name="option2" placeholder="Option 2"  style="height:10px" ></textarea>
             </label>
             <br>
             <label class="container" id="optionC">
-                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <input type="radio" name="option" value="3" id="3"  onclick="fetchRadioButtonValue()"  style="height:30px; width:30px; vertical-align: middle;">
                 <textarea id="option3" name="option3" placeholder="Option 3" style="height:10px" ></textarea>
             </label>
             <br>
             <label class="container" id="optionD"  >
-                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
+                <input type="radio" name="option" value="4" id="4"  onclick="fetchRadioButtonValue()"  style="height:30px; width:30px; vertical-align: middle;">
                 <textarea id="option4" name="option4" placeholder="Option 4" style="height:10px" ></textarea>
             </label>
             <br>
-            <label class="container" id="correctAnswer"  >
-                <input type="radio" name="radio" style="height:30px; width:30px; vertical-align: middle;">
-                <textarea id="correctAns" name="option4" placeholder="Correct Answer" style="height:10px" ></textarea>
+            <br>
+            <br>
+            <h3>Correct answer is:</h3>
+            <label class="resultContainer" id="correctAnswer"  >
+                <textarea id="correctAns" name="option4" placeholder="Correct Answer" style="height:15px" ></textarea>
             </label>
+            <br>
+            <br>
+
         </div>
     </div>
 
@@ -98,16 +103,23 @@
         <br>
         <br>
         <button type="button" id="saveQuestionAnswers" class="button button1" ><b>Save And Next</b></button>
-        <button type="button" id="reviewQuestions" class="button button2"><b>Submit</b></button>
+        <button type="button" id="reviewQuestions" class="button button2"><b>Review</b></button>
+        <button type="button" id="submitQuestions" class="button button2"><b>Submit</b></button>
         <br>
         <br>
     </div>
 
 </form>
 </div>
+</section>
+<section id="reviewQuestionSection">
+    <div id="allQuestiontitle"><h1 style="align-items: center; margin-left: 100px">ALL QUESTIONS</h1></div>
+    <div class="allquestionAnswer" id="allquestionAnswer" style="margin-left: 20%"></div>
+    <button type="button" id="gobackButton" class="button button2"><b>Go back</b></button>
+</section>
+
 </body>
 
 <script th:src="@{/js/createQuiz.js}"></script>
-<script th:src="@{/js/quizHistory.js}"></script>
 
 </html>

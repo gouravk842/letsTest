@@ -1,19 +1,47 @@
 package com.letsTest.dto;
 
-import com.letsTest.entity.Question;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.List;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-@Setter
-@Getter
 public class AnswerDto {
+
     private Long answerId;
-    private Long questionId;
-    private Long quizId;
     private String questionOption;
+    private QuestionDto questions;
+    private Long answerOrder;
+
+
+    public Long getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(Long answerId) {
+        this.answerId = answerId;
+    }
+
+    public String getQuestionOption() {
+        return questionOption;
+    }
+
+    public void setQuestionOption(String questionOption) {
+        this.questionOption = questionOption;
+    }
+
+    public Long getAnswerOrder() {
+        return answerOrder;
+    }
+
+    public void setAnswerOrder(Long answerOrder) {
+        this.answerOrder = answerOrder;
+    }
+
+    public QuestionDto getQuestions() {
+        return questions;
+    }
+    public void setQuestions(QuestionDto question) {
+        this. questions= question;
+    }
+
 
 }
+
 
