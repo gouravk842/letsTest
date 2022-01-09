@@ -5,6 +5,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/createQuiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|Poppins">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
             <b>Faculty DashBoard</b>
         </li>
         <li>
-            <a ><b>Home</b></a>
+            <a href="/facultyHome"><b>Home</b></a>
         </li>
         <li>
             <a href="/createQuiz"><b>Create Quiz</b></a>
@@ -35,9 +36,21 @@
     </ul>
 </nav>
 
+
+<br>
+<br>
+<form>
+    <label style="font-size: 20px;  float: right; margin-right:300px;"><b>Examination Date</b><br>
+        <input type="date" name="date"  id="examinationDate" required pattern="\d{4}-\d{2}-\d{2}">
+        <span class="validity"></span>
+    </label>
+    <label for="duration" style="font-size: 20px;  float: left; margin-left:300px;"><b>Examination Duration</b></label><br>
+    <input type="text" id="duration" name="duration" placeholder="Duration" style="display: flex; align-items: flex-start; margin-left:300px; width: 180px; height:20px;">
+</form>
 <br>
 <br>
 <br>
+
 <section id="createQuizSection">
 <div class="des">
 <form>
@@ -49,6 +62,8 @@
     <label for="description"><b>Description</b></label>
     </div>
     <textarea id="description" name="description" style="height:100px"></textarea>
+    <br>
+    <br>
 </form>
 </div>
 
@@ -68,13 +83,13 @@
 
         <div id="quizOptions"  >
             <label class="container" id="optionA" >
-                <input type="radio" name="option" value="1" id="1" onclick="fetchRadioButtonValue()" style="height:30px; width:30px; vertical-align: middle;">
+                <input type="radio" name="option" value="1" id="1"  onclick="fetchRadioButtonValue()" style="height:30px; width:30px; vertical-align: middle;">
                 <textarea id="option1" name="option1" placeholder="Option 1" style="height:10px; " ></textarea>
             </label>
             <br>
             <label class="container" id="optionB" >
-                <input type="radio" name="option" value="2" id="2"  onclick="fetchRadioButtonValue()"  style="height:30px; width:30px; vertical-align: middle;">
-                <textarea id="option2" name="option2" placeholder="Option 2"  style="height:10px" ></textarea>
+                <input type="radio" name="option" value="2" id="2"  onclick="fetchRadioButtonValue()" style="height:30px; width:30px; vertical-align: middle;">
+                <textarea id="option2" name="option2" placeholder="Option 2" style="height:10px" ></textarea>
             </label>
             <br>
             <label class="container" id="optionC">
@@ -113,8 +128,10 @@
 </div>
 </section>
 <section id="reviewQuestionSection">
-    <div id="allQuestiontitle"><h1 style="align-items: center; margin-left: 100px">ALL QUESTIONS</h1></div>
-    <div class="allquestionAnswer" id="allquestionAnswer" style="margin-left: 20%"></div>
+    <div id="allQuestiontitle"><h1 style="align-items: center; margin-left: 38%;  font-size: 50px; "><b>ALL QUESTIONS</b></h1></div>
+    <br>
+    <br>
+    <div class="allquestionAnswer" id="allquestionAnswer" style="margin-left: 32%; font-size:20px"></div>
     <button type="button" id="gobackButton" class="button button2"><b>Go back</b></button>
 </section>
 
