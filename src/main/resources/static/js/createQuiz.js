@@ -4,6 +4,8 @@ $(document).ready(function (event) {
     $('#reviewQuestionSection').css('display', 'none');
     $('#correctAns').val("");
     $('#title').val("");
+    $('#duration').val("");
+    $('#examinationDate').val("");
     quiz = {};
     question = [];
 
@@ -12,12 +14,17 @@ $(document).ready(function (event) {
 function createQuizQuestion() {
     let title = $('#title').val();
     let description = $('#description').val();
+    let duration= $('#duration').val();
+    let exDate=$('#examinationDate').val();
+
     if (title == "") {
         alert("Please give title of quiz");
     } else {
         quiz["nameOfTopic"] = title;
         quiz["description"] = description;
-        quiz["createdById"] = 1;;
+        quiz["createdById"] = 1;
+        quiz["duration"] = duration;
+        quiz["expireDate"] = exDate;
         alert('Quiz created successfully')
         $('#addQuestion').css('display', 'block');
         $('#createQuiz').css('display', 'none');
@@ -32,6 +39,7 @@ $(document).on('click','#createQuiz', function(e){
 
 $(document).on('click','#submitQuestions', function(e){
     saveQuizQuestionAnswers();
+    alert('Quiz and all questions has been submitted');
 
 })
 $(document).on('click','#gobackButton', function(e){

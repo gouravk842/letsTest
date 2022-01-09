@@ -47,16 +47,17 @@
         border-color: rgb(187, 187, 187);
         border-radius: 12px;
         margin: 20px 10% 20px 10%;
-        font-size:30px;
+        font-size:20px;
         padding-left:15px;
         border-color: #4ece7b;
         padding-top:10px;
         padding-bottom:10px;
     }
     .showName, .showEmail, .showAddress, .showCollegeName, .showDepartment, .mb{
-        display:flex;
-        float:right;
+        display:block;
+        float:inherit;
         color:#009688;
         margin-right:60px;
+        margin-left:20px;
 
     }

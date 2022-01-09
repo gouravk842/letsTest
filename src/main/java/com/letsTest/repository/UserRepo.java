@@ -9,4 +9,8 @@ public interface UserRepo extends JpaRepository<User,Long> {
 
     @Query("select  s from User s where s.email=:email")
     User findByEmail(@Param("email")String email);
+
+
+    @Query("select  s from User s where s.userId=:id")
+    User getUserById(@Param("id")Long id);
 }

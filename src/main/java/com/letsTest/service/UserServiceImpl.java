@@ -1,8 +1,6 @@
 package com.letsTest.service;
 
-import com.letsTest.dto.ResultDto;
 import com.letsTest.dto.userDto;
-import com.letsTest.entity.Result;
 import com.letsTest.entity.User;
 import com.letsTest.repository.UserRepo;
 import org.modelmapper.ModelMapper;
@@ -13,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -28,12 +26,6 @@ public class UserServiceImpl implements UserService {
     BCryptPasswordEncoder passwordEncoder;
     @Autowired
     UserRepo userRepo;
-
-    @Override
-    public userDto FindById(Long userID) {
-        Optional<User> user = userRepo.findById(userID);
-        return modelMapper.map(user, userDto.class);
-    }
 
 
     @Override
@@ -50,6 +42,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public userDto findUserByEmail(String email) {
         User existingUser = userRepo.findByEmail(email);
+        if (existingUser != null) {
+            userDto existingUserDto = modelMapper.map(existingUser, new TypeToken<userDto>() {
+            }.getType());
+            existingUserDto.setPassword(null);
+            return existingUserDto;
+        } else {
+            return null;
+        }
+    }
+    @Override
+    public userDto getUserById(@PathVariable(value="id") Long id) {
+        User existingUser = userRepo.getUserById(id);
         if (existingUser != null) {
             userDto existingUserDto = modelMapper.map(existingUser, new TypeToken<userDto>() {
             }.getType());
