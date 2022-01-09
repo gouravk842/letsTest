@@ -50,3 +50,22 @@
     border-radius: 10px;
 
 }
+#questionDiv{
+    border-style: solid;
+    border-radius: 12px;
+    border-color: #35A6EB;
+    border-width: 5px;
+    margin: 100px 20% auto 20%;
+    background-color:#4ece7b ;
+}
+.radio-default{
+    border-style: inset;
+    border-color: grey;
+    border-radius: 12px;
+    margin: 20px 20% 20px 10%;
+    font-size:20px;
+    padding-left:15px;
+    background-color: white;
+    padding-top:5px;
+    padding-bottom:5px;
+}
