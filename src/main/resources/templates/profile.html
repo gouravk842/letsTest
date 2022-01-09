@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
 <body>
-<h1>this is profile</h1>
+<div class="logo">
+    <h1>LETSTEST</h1>
+</div>
+<nav class="navbar">
+    <ul>
+        <li>
+            <b>Faculty DashBoard</b>
+        </li>
+        <li>
+            <a href="/facultyHome"><b>Home</b></a>
+        </li>
+        <li>
+            <a href="/createQuiz"><b>Create Quiz</b></a>
+        </li>
+        <li>
+            <a href="/quizHistory"><b>Quiz History</b></a>
+        </li>
+        <li>
+            <a href="/quizAnalysis"><b>Quiz Response</b></a>
+        </li>
+        <li>
+            <a href="/profile"><b>Profile</i></b></i></a>
+        </li>
+    </ul>
+</nav>
+
+<br>
+<br>
+<br>
+
+<div id="heading" class="heading" style="font-size: 70px; text-align:center; color:blue">
+    <b><i>Your Profile</i></b>
+</div>
+<div id="designProfile" class="designProfile" >
+<div id="name" class="name" style="margin-top:40px">
+    <b>Name : </b>
+    <div id="showName" class="showName"></div>
+</div>
+<div id="email" class="name">
+    <b>Email Id : </b>
+    <div id="showEmail" class="showEmail"></div>
+</div>
+<div id="department" class="department">
+    <b>Department : </b>
+    <div id="showDepartment" class="showDepartment"></div>
+</div>
+<div id="collegeName" class="collegeName">
+    <b>College Name : </b>
+    <div id="showCollegeName" class="showCollegeName">Katihar Engineering College</div>
+</div>
+<div id="address" class="address">
+    <b>Address : </b>
+    <div id="showAddress" class="showAddress"></div>
+</div>
+<div id="mobile" class="mobile" style="margin-bottom:40px">
+    <b>Mobile No : </b>
+    <div id="mb" class="mb"></div>
+</div>
+</div>
+<br>
+<br>
+<br>
 </body>
 </html>
