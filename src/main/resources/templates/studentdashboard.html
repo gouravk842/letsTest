@@ -2,63 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Side Navigation Bar</title>
-    <link rel="stylesheet" type="text/css" href="css/studentDashboard.css">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <title>Student Dashboard</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/studentDashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/w2ui-min.css}">
+    <header class="center">
+        <h1>Student Dashboard</h1>
+    </header>
+
 </head>
 <body>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#upcoming">Upcoming Quiz</a>
+    <a href="#completed">Completed Quiz</a>
+    <a href="#about">About</a>
+</div>
+<div id="upcoming">
+    <div id="activeQuiz"></div>
+</div>
 
-<div class="wrapper">
-    <div class="sidebar">
-        <h2>Sidebar</h2>
-        <ul>
-            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>Profile</a></li>
-            <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
-            <li><a href="#"><i class="fas fa-project-diagram"></i>portfolio</a></li>
-            <li><a href="#"><i class="fas fa-blog"></i>Blogs</a></li>
-            <li><a href="#"><i class="fas fa-address-book"></i>Contact</a></li>
-            <li><a href="#"><i class="fas fa-map-pin"></i>Map</a></li>
-        </ul>
-        <div class="social_media">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-    <div class="main_content">
-        <div class="header">Welcome!! Have a nice day.</div>
-        <div class="info">
-            <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A sed nobis ut exercitationem atque accusamus
-                sit natus officiis totam blanditiis at eum nemo, nulla et quae eius culpa eveniet voluptatibus repellat
-                illum tenetur, facilis porro. Quae fuga odio perferendis itaque alias sint, beatae non maiores magnam
-                ad, veniam tenetur atque ea exercitationem earum eveniet totam ipsam magni tempora aliquid ullam
-                possimus? Tempora nobis facere porro, praesentium magnam provident accusamus temporibus! Repellendus
-                harum veritatis itaque molestias repudiandae ea corporis maiores non obcaecati libero, unde ipsum
-                consequuntur aut consectetur culpa magni omnis vero odio suscipit vitae dolor quod dignissimos
-                perferendis eos? Consequuntur!
-            </div>
-            <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A sed nobis ut exercitationem atque accusamus
-                sit natus officiis totam blanditiis at eum nemo, nulla et quae eius culpa eveniet voluptatibus repellat
-                illum tenetur, facilis porro. Quae fuga odio perferendis itaque alias sint, beatae non maiores magnam
-                ad, veniam tenetur atque ea exercitationem earum eveniet totam ipsam magni tempora aliquid ullam
-                possimus? Tempora nobis facere porro, praesentium magnam provident accusamus temporibus! Repellendus
-                harum veritatis itaque molestias repudiandae ea corporis maiores non obcaecati libero, unde ipsum
-                consequuntur aut consectetur culpa magni omnis vero odio suscipit vitae dolor quod dignissimos
-                perferendis eos? Consequuntur!
-            </div>
-            <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A sed nobis ut exercitationem atque accusamus
-                sit natus officiis totam blanditiis at eum nemo, nulla et quae eius culpa eveniet voluptatibus repellat
-                illum tenetur, facilis porro. Quae fuga odio perferendis itaque alias sint, beatae non maiores magnam
-                ad, veniam tenetur atque ea exercitationem earum eveniet totam ipsam magni tempora aliquid ullam
-                possimus? Tempora nobis facere porro, praesentium magnam provident accusamus temporibus! Repellendus
-                harum veritatis itaque molestias repudiandae ea corporis maiores non obcaecati libero, unde ipsum
-                consequuntur aut consectetur culpa magni omnis vero odio suscipit vitae dolor quod dignissimos
-                perferendis eos? Consequuntur!
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>
+<script th:src="@{/js/studentDashboard.js}"></script>
+<script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
+<script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 </html>

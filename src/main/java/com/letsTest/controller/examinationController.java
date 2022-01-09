@@ -18,8 +18,8 @@ public class examinationController {
     ExaminationService examinationService;
 
     @ResponseBody
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public ModelAndView register() {
+    @RequestMapping(value = "/dashboard/{id}", method = RequestMethod.GET)
+    public ModelAndView register(@PathVariable(value = "id") Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("examinationDashboard.html");
         return mv;

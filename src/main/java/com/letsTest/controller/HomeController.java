@@ -1,5 +1,6 @@
 package com.letsTest.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView root() {
         ModelAndView mv=new ModelAndView();
-        mv.setViewName("facultyHome.html");
+        mv.setViewName("index.html");
         return mv;
     }
 
@@ -64,6 +65,12 @@ public class HomeController {
     public ModelAndView profile() {
         ModelAndView mv=new ModelAndView();
         mv.setViewName("profile.html");
+        return mv;
+    }
+    @GetMapping("/faculty")
+    public ModelAndView facultyDashboard(Authentication auth) {
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("facultyHome.html");
         return mv;
     }
 }

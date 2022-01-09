@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface ResultService {
 
-    String SaveResultMarks(ResultDto resultDto);
+    String SaveResultMarks(Long quizId);
 
     List<ResultDto> getResultMarks(Long quizId, Long createdById);
 }

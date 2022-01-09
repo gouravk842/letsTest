@@ -1,4 +1,5 @@
 package com.letsTest.dto;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,4 +11,5 @@ public class ResultDto {
     private Long createdById;
     private Long totalMarks;
     private String email;
+    private Long userId;
 }

@@ -16,6 +16,7 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resultId;
     private Long quizId;
+    private Long userId;
     private Long createdById;
     private Long totalMarks;
     private String email;

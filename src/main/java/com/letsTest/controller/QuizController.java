@@ -33,94 +33,88 @@ public class QuizController {
     @Autowired
     private CorrecrAnswerService correcrAnswerService;
 
-    @RequestMapping(value="/save",method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public Long saveQuizDetails(@RequestBody QuizDto quizDto)
-    {
+    public Long saveQuizDetails(@RequestBody QuizDto quizDto) {
         return quizService.SaveQuiz(quizDto);
     }
 
 
-    @RequestMapping(value="/update",method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     @ResponseBody
-    public String editQuizDetails(@RequestBody QuizDto quizDto)
-    {
+    public String editQuizDetails(@RequestBody QuizDto quizDto) {
         return quizService.EditQuiz(quizDto);
     }
 
 
-    @RequestMapping(value="/delete/{quizId}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{quizId}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String deleteQuizDetailsById(@PathVariable(value = "quizId") Long quizId)
-    {
+    public String deleteQuizDetailsById(@PathVariable(value = "quizId") Long quizId) {
         return quizService.DeleteQuiz(quizId);
     }
 
-    @RequestMapping(value="/get/{createdById}",method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{createdById}", method = RequestMethod.GET)
     @ResponseBody
-    public List<QuizDto> getQuizDetailsById(@PathVariable(value = "createdById") Long createdById)
-    {
+    public List<QuizDto> getQuizDetailsById(@PathVariable(value = "createdById") Long createdById) {
         return quizService.getQuizByCreatedById(createdById);
     }
 
-
-    @RequestMapping(value="/question/save",method = RequestMethod.POST)
+    @RequestMapping(value = "/activeQuiz", method = RequestMethod.GET)
     @ResponseBody
-    public String saveQuestionDetails(@RequestBody QuestionDto questionDto)
-    {
+    public List<QuizDto> getQuizActiveDetails() {
+        return quizService.getActiveQuiz();
+    }
+
+
+    @RequestMapping(value = "/question/save", method = RequestMethod.POST)
+    @ResponseBody
+    public String saveQuestionDetails(@RequestBody QuestionDto questionDto) {
         return questionService.saveQuestions(questionDto);
     }
 
-    @RequestMapping(value="/question/update",method = RequestMethod.PUT)
+    @RequestMapping(value = "/question/update", method = RequestMethod.PUT)
     @ResponseBody
-    public String editQuestionDetails(@RequestBody QuestionDto questionDto)
-    {
+    public String editQuestionDetails(@RequestBody QuestionDto questionDto) {
         return questionService.EditQuestion(questionDto);
     }
 
 
-    @RequestMapping(value="/question/delete/{questionId}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/question/delete/{questionId}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String deleteQuestionDetailsById(@PathVariable(value = "questionId") Long questionId)
-    {
+    public String deleteQuestionDetailsById(@PathVariable(value = "questionId") Long questionId) {
         return questionService.deleteQuestion(questionId);
     }
 
 
-    @RequestMapping(value="/answer/save",method = RequestMethod.POST)
+    @RequestMapping(value = "/answer/save", method = RequestMethod.POST)
     @ResponseBody
-    public String saveAnswerDetails(@RequestBody AnswerDto answerDto)
-    {
+    public String saveAnswerDetails(@RequestBody AnswerDto answerDto) {
         return answerService.saveAnswer(answerDto);
     }
 
-    @RequestMapping(value="/answer/update",method = RequestMethod.PUT)
+    @RequestMapping(value = "/answer/update", method = RequestMethod.PUT)
     @ResponseBody
-    public String editAnswerDetails(@RequestBody AnswerDto answerDto)
-    {
+    public String editAnswerDetails(@RequestBody AnswerDto answerDto) {
         return answerService.EditOptions(answerDto);
     }
 
-    @RequestMapping(value="/answer/delete/{answerId}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/answer/delete/{answerId}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String deleteAnswerDetailsById(@PathVariable(value = "answerId") Long answerId)
-    {
+    public String deleteAnswerDetailsById(@PathVariable(value = "answerId") Long answerId) {
         return answerService.deleteAnswerById(answerId);
     }
 
-    @RequestMapping(value="/get/quizDetail/{quizId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/get/quizDetail/{quizId}", method = RequestMethod.GET)
     @ResponseBody
-    public Quiz getQuizDetailsByQuizId(@PathVariable(value = "quizId") Long quizId)
-    {
+    public Quiz getQuizDetailsByQuizId(@PathVariable(value = "quizId") Long quizId) {
         return quizService.getQuiz(quizId);
-
     }
 
-    @RequestMapping(value="/save/questionAnswerDetail",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/save/questionAnswerDetail", method = RequestMethod.POST)
     @ResponseBody
-    public String saveQuestionAnswerDetail(@RequestBody QuizDto quizDto)
-    {
-            quizService.SaveQuiz(quizDto);
+    public String saveQuestionAnswerDetail(@RequestBody QuizDto quizDto) {
+        quizService.SaveQuiz(quizDto);
         return "Success";
     }
 

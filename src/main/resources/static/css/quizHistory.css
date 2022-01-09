@@ -97,3 +97,14 @@
     margin-bottom: 40px;
     margin-top: 20px;
 }
+.btn {
+    color:white;
+    background:none;
+    background-color:#B3B3B3;
+    border-radius:0;
+    text-shadow:none;
+}
+.btn:hover {
+    background-color:#29ABE2;
+    color:white;
+}

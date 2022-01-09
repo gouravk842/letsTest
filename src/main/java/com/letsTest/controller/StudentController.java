@@ -1,8 +1,12 @@
 package com.letsTest.controller;
 
+import com.google.gson.Gson;
 import com.letsTest.dto.ResultDto;
 import com.letsTest.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +23,16 @@ public class StudentController {
 
     @Autowired
     ResultService resultService;
+    @Autowired
+    Gson gson;
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.GET)
     @ResponseBody
-    public String SaveResultMarks(@RequestBody ResultDto resultDto) {
-        return resultService.SaveResultMarks(resultDto);
+    public ResponseEntity<?> SaveResultMarks(@RequestParam Long quizId) {
+        resultService.SaveResultMarks(quizId);
+        String msg = "Saved Successful";
+        String msgJson = gson.toJson(msg);
+        return new ResponseEntity<>(msgJson, new HttpHeaders(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)

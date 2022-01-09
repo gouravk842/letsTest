@@ -17,7 +17,7 @@ function login(email,password){
         timeout: 600000,
 
         success: function (data, textStatus, xhr) {
-            alert('success')
+            window.location="http://localhost:8080/dashboard/redirect"
 
         },
         error: function (e) {

@@ -1,32 +1,32 @@
 $(document).ready(function () {
 
     $("#signup").click(function () {
-        let name=$('#name').val()
-        let mobile=$('#mobile').val()
-        let email=$('#email').val()
-        let password=$('#pass').val()
-        let address=$('#address').val()
-        let college_name=$('#college').val()
-        let regNo=$('#regNo').val()
-        let department=$('#department').val()
+        let name = $('#name').val()
+        let mobile = $('#mobile').val()
+        let email = $('#email').val()
+        let password = $('#pass').val()
+        let address = $('#address').val()
+        let college_name = $('#college').val()
+        let regNo = $('#regNo').val()
+        let department = $('#department').val()
 
-        let details={}
-        details['name']=name
-        details['mobileNo']=mobile
-        details['address']=address
-        details['password']=password
-        details['collegeName']=college_name
-        details['collegeRegNo']=regNo
-        details['department']=department
-        details['role']='Student'
-        details['status']='true'
-        details['email']=email
+        let details = {}
+        details['name'] = name
+        details['mobileNo'] = mobile
+        details['address'] = address
+        details['password'] = password
+        details['collegeName'] = college_name
+        details['collegeRegNo'] = regNo
+        details['department'] = department
+        details['role'] = 'Student'
+        details['status'] = 'true'
+        details['email'] = email
         saveData(details)
 
     });
 });
 
-function saveData(data){
+function saveData(data) {
     let registrationDetailsString = JSON.stringify(data)
 
 
@@ -41,12 +41,16 @@ function saveData(data){
         timeout: 600000,
         dataType: 'json',
         success: function (data, textStatus, xhr) {
-           alert('success')
+            alert('success')
 
         },
         error: function (e) {
-           alert('error')
+            alert('error')
         }
     });
 
 }
+
+$("#signin").click(function () {
+    window.location = "http://localhost:8080/"
+})

@@ -16,4 +16,5 @@ public class StudentAnswerDto {
     private Long studentId;
     private Long answerId;
     private Long questionId;
+    private Long quizId;
 }
