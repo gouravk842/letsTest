@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Examination DashBoard</title>
-    <link rel="stylesheet" type="text/css" href="css/examinationDashboard.css">
+    <link rel="stylesheet" th:href="@{/css/examinationDashboard.css}">
     <link rel="stylesheet" href="css/w2ui-min.css">
-    <script src="js/w2ui-min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
+<div class="logo">
+    <h1>LETSTEST</h1>
+</div>
 <body>
-<form>
+
+<section id="examDashboard">
     <div class="questionAnswer">
         <div id="instruction">
-            <div>Welcome</div>
-            <div>The examination will be composed of Objective type Multiple Choice Questions (MCQs)</div>
-            <div>There will be NO NEGATIVE MARKING for the wrong answers.</div>
-            <div>The students just need to click on the Right Choice / Correct option from the
-                multiple choices /options given with each question. For Multiple Choice Questions,
-                each question has four options, and the candidate has to click the appropriate
-                option.
+            <div id="welcome" class="welcome">Welcome</div>
+            <div id="someInstruction">
+            <ul>
+                <li style="color: #0A96DE; margin-bottom: 10px">The examination will be composed of Objective type Multiple Choice Questions (MCQs)</li>
+                <li style="color: #0A96DE; margin-bottom: 10px">There will be NO NEGATIVE MARKING for the wrong answers.</li>
+                <li style="color: #0A96DE; ">The students just need to click on the Right Choice / Correct option from the
+                    multiple choices /options given with each question. For Multiple Choice Questions,
+                    each question has four options, and the candidate has to click the appropriate
+                    option.
+                </li>
+            </ul>
             </div>
+            <br><br><br><br>
         </div>
-        <div id="questionDiv">
+        <div id="questionDiv" style="display: none">
             <h3 id="question"></h3>
             <div class="radio-default">
                 <input type="radio" id="radio1" name="option">
@@ -46,12 +54,10 @@
 
     </div>
 
-</form>
-
-
 <div>
     <button id="start" type="button">Start Test</button>
 </div>
+</section>
 </body>
 <script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
 <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>

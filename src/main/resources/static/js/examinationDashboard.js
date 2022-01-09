@@ -23,6 +23,8 @@ var total_question = 0
 var data;
 
 function startExam(examid) {
+    document.getElementById("questionDiv").style.display="block";
+    document.getElementById("start").style.display="none";
     $.ajax({
         type: "GET",
         enctype: 'multipart/form-data',
