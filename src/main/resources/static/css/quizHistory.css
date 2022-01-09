@@ -14,10 +14,13 @@
     height: 50px;
     justify-content: center;
     align-items: center;
+
 }
 #quizHistory{
     background-color: #e0f7fa;
+    overflow: scroll;
 }
+
 .quizButton:hover {
     background: #eee;
 }

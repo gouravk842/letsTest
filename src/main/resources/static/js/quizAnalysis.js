@@ -44,7 +44,6 @@ function loadallQuiz() {
     });
 }
 function resultDetails(quizId,createdById) {
-    console.log(quizId);
     $.ajax({
         url: "/results/get?quizId="+quizId+"&createdById="+1,
         dataType: "json",
