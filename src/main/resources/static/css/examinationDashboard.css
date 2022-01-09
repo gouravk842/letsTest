@@ -1,0 +1,10 @@
+.questionAnswer{
+    background-color: Grey;
+    text-align:center;
+    color : black;
+    font-size: 20px;
+    width: 50%;
+    max-width: 70%;
+    margin: 20px auto;
+    box-shadow: 0 0 15px #2f2f2f78, 0 0 35px #19191982;
+}
