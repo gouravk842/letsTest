@@ -1,13 +1,14 @@
 package com.letsTest.controller;
 
 import com.letsTest.dto.QuizDto;
+import com.letsTest.dto.StudentAnswerDto;
 import com.letsTest.service.ExaminationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -26,7 +27,17 @@ public class examinationController {
 
     @ResponseBody
     @RequestMapping(value = "/start/{id}", method = RequestMethod.GET)
-    public QuizDto startExam(@PathVariable(value = "id") Long id) {
-        return examinationService.startExam(id);
+    public ResponseEntity<?> startExam(@PathVariable(value = "id") Long id) {
+
+        QuizDto quizDto = examinationService.startExam(id);
+        return new ResponseEntity<>(quizDto, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/saveAnswer", method = RequestMethod.POST)
+    public ResponseEntity<?> saveAnswer(@RequestBody StudentAnswerDto studentAnswerDto) {
+        examinationService.saveAnswer(studentAnswerDto);
+        String msg = "Success";
+        return new ResponseEntity<>("Success", new HttpHeaders(), HttpStatus.OK);
     }
 }
