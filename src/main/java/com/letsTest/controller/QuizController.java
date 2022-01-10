@@ -3,11 +3,13 @@ package com.letsTest.controller;
 import com.letsTest.dto.*;
 import com.letsTest.entity.Quiz;
 import com.letsTest.repository.QuizRepository;
+import com.letsTest.repository.UserRepo;
 import com.letsTest.service.AnswerService;
 import com.letsTest.service.CorrecrAnswerService;
 import com.letsTest.service.QuestionService;
 import com.letsTest.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,10 +34,15 @@ public class QuizController {
 
     @Autowired
     private CorrecrAnswerService correcrAnswerService;
+    @Autowired
+    private UserRepo userRepo;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public Long saveQuizDetails(@RequestBody QuizDto quizDto) {
+    public Long saveQuizDetails(@RequestBody QuizDto quizDto, Authentication authentication) {
+
+        Long id = userRepo.getIdByEmail(authentication.getName());
+        quizDto.setCreatedById(id);
         return quizService.SaveQuiz(quizDto);
     }
 
@@ -55,8 +62,9 @@ public class QuizController {
 
     @RequestMapping(value = "/get/{createdById}", method = RequestMethod.GET)
     @ResponseBody
-    public List<QuizDto> getQuizDetailsById(@PathVariable(value = "createdById") Long createdById) {
-        return quizService.getQuizByCreatedById(createdById);
+    public List<QuizDto> getQuizDetailsById(@PathVariable(value = "createdById") Long createdById,Authentication auth) {
+       Long id=userRepo.getIdByEmail(auth.getName());
+        return quizService.getQuizByCreatedById(id);
     }
 
     @RequestMapping(value = "/activeQuiz", method = RequestMethod.GET)

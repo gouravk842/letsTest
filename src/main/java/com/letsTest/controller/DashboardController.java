@@ -23,6 +23,7 @@ public class DashboardController {
     @ResponseBody
     public void dashboard(HttpServletRequest httpServletRequest, HttpSession session, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
         if (authorities != null && authorities.size() > 0) {
             Set<String> roles = authorities.stream().map(auth -> auth.getAuthority()).collect(Collectors.toSet());
             if (roles.contains("Faculty"))

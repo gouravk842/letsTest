@@ -14,27 +14,29 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView root() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("index.html");
         return mv;
     }
 
     @GetMapping("/home")
     public ModelAndView home() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("home.html");
         return mv;
     }
+
     @ResponseBody
-    @RequestMapping(value = "/registration",method = RequestMethod.GET)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView register() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("registration.html");
         return mv;
     }
+
     @GetMapping("/reviewQuestions")
     public ModelAndView reviewQuestions() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("reviewQuestions.html");
         return mv;
     }
@@ -42,34 +44,42 @@ public class HomeController {
 
     @GetMapping("/createQuiz")
     public ModelAndView createQuiz() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("createQuiz.html");
         return mv;
     }
 
     @GetMapping("/quizHistory")
     public ModelAndView quizHistory() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("quizHistory.html");
         return mv;
     }
 
     @GetMapping("/quizAnalysis")
     public ModelAndView quizAnalysis() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("quizAnalysis.html");
         return mv;
     }
 
     @GetMapping("/profile")
     public ModelAndView profile() {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("profile.html");
         return mv;
     }
+
+    @GetMapping("/Studentprofile")
+    public ModelAndView studentprofile() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("studentProfile.html");
+        return mv;
+    }
+
     @GetMapping("/faculty")
     public ModelAndView facultyDashboard(Authentication auth) {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("facultyHome.html");
         return mv;
     }

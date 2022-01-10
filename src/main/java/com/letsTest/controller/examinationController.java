@@ -2,11 +2,13 @@ package com.letsTest.controller;
 
 import com.letsTest.dto.QuizDto;
 import com.letsTest.dto.StudentAnswerDto;
+import com.letsTest.repository.UserRepo;
 import com.letsTest.service.ExaminationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class examinationController {
     @Autowired
     ExaminationService examinationService;
+    @Autowired
+    UserRepo userRepo;
 
     @ResponseBody
     @RequestMapping(value = "/dashboard/{id}", method = RequestMethod.GET)
@@ -35,7 +39,9 @@ public class examinationController {
 
     @ResponseBody
     @RequestMapping(value = "/saveAnswer", method = RequestMethod.POST)
-    public ResponseEntity<?> saveAnswer(@RequestBody StudentAnswerDto studentAnswerDto) {
+    public ResponseEntity<?> saveAnswer(@RequestBody StudentAnswerDto studentAnswerDto, Authentication auth) {
+        Long id= userRepo.getIdByEmail(auth.getName());
+        studentAnswerDto.setStudentId(id);
         examinationService.saveAnswer(studentAnswerDto);
         String msg = "Success";
         return new ResponseEntity<>("Success", new HttpHeaders(), HttpStatus.OK);

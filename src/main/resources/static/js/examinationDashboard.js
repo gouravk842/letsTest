@@ -9,22 +9,21 @@ $(document).ready(function (e) {
 
     });
 })
-// document.addEventListener("fullscreenchange", function (event) {
-//     if (document.fullscreenElement) {
-//         $("#title").text('exam started')
-//         console.log('active')
-//     } else {
-//         // fullscreen is cancelled
-//         $("#title").text('exam ended')
-//         console.log('close')
-//     }
-// });
+document.addEventListener("fullscreenchange", function (event) {
+    if (document.fullscreenElement) {
+        console.log('active')
+    } else {
+        // fullscreen is cancelled
+        alert("Examination Over")
+        window.location = "http://localhost:8080/redirect/dashboard"
+    }
+});
 var total_question = 0
 var data;
 
 function startExam(examid) {
-    document.getElementById("questionDiv").style.display="block";
-    document.getElementById("start").style.display="none";
+    document.getElementById("questionDiv").style.display = "block";
+    document.getElementById("start").style.display = "none";
     $.ajax({
         type: "GET",
         enctype: 'multipart/form-data',
@@ -62,38 +61,42 @@ function populateQuestions(data) {
 }
 
 $("#next").click(function () {
-
+    let url = window.location.href;
+    let quizid = url.substring(url.lastIndexOf('/') + 1)
     if ($("input[type='radio'][name='option']:checked").val() === undefined) {
         // w2alert("You haven't selected any option")
         alert("You haven't selected any option")
     } else {
-       let answerId=$("input[type='radio'][name='option']:checked").val()
-        let questionId=$('#question').val()
-        saveAnswer(answerId,questionId)
+        let answerId = $("input[type='radio'][name='option']:checked").val()
+        let questionId = $('#question').val()
+        saveAnswer(answerId, questionId, quizid)
         question_no += 1
-        if(question_no<=total_question){
+        $('input[name="option"]').prop('checked', false);
+        if (question_no <= total_question) {
             populateQuestions(data)
-        }
-        else{
+        } else {
             alert("Examination Completed")
+            window.location="http://localhost:8080/dashboard/redirect"
         }
 
 
     }
 
 })
-function saveAnswer(answerid,questionid){
-    let ans={}
-    ans['studentId']=1
-    ans['answerId']=answerid
-    ans['questionId']=questionid
+
+function saveAnswer(answerid, questionid, quizid) {
+    let ans = {}
+    ans['studentId'] = 1
+    ans['quizId'] = quizid
+    ans['answerId'] = answerid
+    ans['questionId'] = questionid
     let studentAnswerString = JSON.stringify(ans)
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
         contentType: 'application/json',
         url: "/exam/saveAnswer",
-        data:studentAnswerString,
+        data: studentAnswerString,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         cache: false,
         timeout: 600000,
