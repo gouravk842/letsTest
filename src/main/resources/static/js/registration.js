@@ -18,7 +18,11 @@ $(document).ready(function () {
         details['collegeName'] = college_name
         details['collegeRegNo'] = regNo
         details['department'] = department
-        details['role'] = 'Student'
+        if ($("input[type='radio'][name='age']:checked").val() === undefined) {
+            details['role'] = 'Student'}
+        else{
+            details['role'] =$("input[type='radio'][name='age']:checked").val()
+        }
         details['status'] = 'true'
         details['email'] = email
         saveData(details)
